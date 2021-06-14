@@ -1,8 +1,8 @@
 import 'package:countries_app_test/boxes/boxes.dart';
 import 'package:countries_app_test/components/list_component.dart';
-import 'package:countries_app_test/components/navigator.dart';
 import 'package:countries_app_test/model/country_model.dart';
 import 'package:countries_app_test/widgets/info_widget.dart';
+import 'package:countries_app_test/widgets/navigation_menu';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -24,7 +24,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         title: Center(
           child: Text(
             "Favourite Countries",
@@ -32,6 +32,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           ),
         ),
       ),
+      drawer: NavDrawer(),
       body: ValueListenableBuilder<Box<CountryModel>>(
           valueListenable: Boxes.getFavourites().listenable(),
           builder: (context, box, _) {
@@ -57,7 +58,6 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 return Column(
                   children: <Widget>[
                     countriesList(),
-                    BottomNavigation(),
                   ],
                 );
               },
