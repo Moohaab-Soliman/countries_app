@@ -1,8 +1,8 @@
 import 'package:countries_app_test/boxes/boxes.dart';
 import 'package:countries_app_test/components/list_component.dart';
-import 'package:countries_app_test/components/navigator.dart';
 import 'package:countries_app_test/model/country_model.dart';
 import 'package:countries_app_test/widgets/info_widget.dart';
+import 'package:countries_app_test/widgets/navigation_menu';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -24,7 +24,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         title: Center(
           child: Text(
             "Visited Countries",
@@ -32,6 +32,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
           ),
         ),
       ),
+      drawer: NavDrawer(),
       body: ValueListenableBuilder<Box<CountryModel>>(
           valueListenable: Boxes.getVisited().listenable(),
           builder: (context, box, _) {
@@ -63,16 +64,16 @@ class _VisitedScreenState extends State<VisitedScreen> {
                       width: double.infinity,
                       height: 80,
                       child: Card(
-                          child: Center(
-                        child: Text(
-                          'Number of Visited Countries : ' +
-                              visitedCountries.length.toString(),
-                          style: TextStyle(fontSize: 18, color: Colors.grey),
+                        child: Center(
+                          child: Text(
+                            'Number of Visited Countries : ' +
+                                visitedCountries.length.toString(),
+                            style: TextStyle(fontSize: 18, color: Colors.grey),
+                          ),
                         ),
-                      )),
+                      ),
                     ),
                     countriesList(),
-                    BottomNavigation(),
                   ],
                 );
               },
