@@ -1,8 +1,8 @@
 import 'package:countries_app_test/boxes/boxes.dart';
-import 'package:countries_app_test/components/list_component.dart';
+import 'package:countries_app_test/widgets/list_component.dart';
 import 'package:countries_app_test/model/country_model.dart';
 import 'package:countries_app_test/widgets/info_widget.dart';
-// import 'package:countries_app_test/widgets/navigation_menu';
+import 'package:countries_app_test/widgets/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -32,7 +32,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
           ),
         ),
       ),
-      // drawer: NavDrawer(),
+      drawer: NavDrawer(),
       body: ValueListenableBuilder<Box<CountryModel>>(
           valueListenable: Boxes.getVisited().listenable(),
           builder: (context, box, _) {
@@ -43,7 +43,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
                 return Column(
                   children: <Widget>[
                     NumOfVisited(visitedCountries: visitedCountries),
-                    countriesList(),
+                    visitedList(),
                   ],
                 );
               },
@@ -52,7 +52,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
     );
   }
 
-  Widget countriesList() {
+  Widget visitedList() {
     return Expanded(
       child: visitedCountries.length == 0
           ? info(
@@ -60,13 +60,13 @@ class _VisitedScreenState extends State<VisitedScreen> {
           : ListView.builder(
               itemCount: Boxes.getVisited().length,
               itemBuilder: (_, int index) {
-                var country = visitedCountries[index];
+                var visitedCountry = visitedCountries[index];
                 return Container(
                     margin: const EdgeInsets.symmetric(horizontal: 5),
                     child: Column(
                       children: [
                         ListComponent(
-                          country: country,
+                          country: visitedCountry,
                         ),
                       ],
                     ));

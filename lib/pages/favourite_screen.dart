@@ -1,5 +1,5 @@
 import 'package:countries_app_test/boxes/boxes.dart';
-import 'package:countries_app_test/components/list_component.dart';
+import 'package:countries_app_test/widgets/list_component.dart';
 import 'package:countries_app_test/model/country_model.dart';
 import 'package:countries_app_test/widgets/info_widget.dart';
 import 'package:countries_app_test/widgets/navigation_menu.dart';
@@ -42,7 +42,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                   {VoidCallback? refetch, FetchMore? fetchMore}) {
                 return Column(
                   children: <Widget>[
-                    countriesList(),
+                    favouriteList(),
                   ],
                 );
               },
@@ -51,7 +51,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
     );
   }
 
-  Widget countriesList() {
+  Widget favouriteList() {
     List favouriteCountries = Boxes.getFavourites().values.toList();
 
     return Expanded(
@@ -60,12 +60,12 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           : ListView.builder(
               itemCount: Boxes.getFavourites().length,
               itemBuilder: (_, int index) {
-                var country = favouriteCountries[index];
+                var favCountries = favouriteCountries[index];
 
                 return Container(
                   margin: const EdgeInsets.symmetric(horizontal: 5),
                   child: ListComponent(
-                    country: country,
+                    country: favCountries,
                   ),
                 );
               },

@@ -1,6 +1,6 @@
 import 'package:countries_app_test/boxes/boxes.dart';
-import 'package:countries_app_test/components/list_component.dart';
-import 'package:countries_app_test/components/search_widget.dart';
+import 'package:countries_app_test/widgets/list_component.dart';
+import 'package:countries_app_test/widgets/search_widget.dart';
 import 'package:countries_app_test/model/country_model.dart';
 import 'package:countries_app_test/widgets/info_widget.dart';
 import 'package:countries_app_test/widgets/navigation_menu.dart';
