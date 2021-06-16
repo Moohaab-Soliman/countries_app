@@ -3,7 +3,7 @@ import 'package:countries_app_test/components/list_component.dart';
 import 'package:countries_app_test/components/search_widget.dart';
 import 'package:countries_app_test/model/country_model.dart';
 import 'package:countries_app_test/widgets/info_widget.dart';
-import 'package:countries_app_test/widgets/navigation_menu';
+import 'package:countries_app_test/widgets/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
