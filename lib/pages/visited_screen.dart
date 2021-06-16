@@ -2,7 +2,7 @@ import 'package:countries_app_test/boxes/boxes.dart';
 import 'package:countries_app_test/components/list_component.dart';
 import 'package:countries_app_test/model/country_model.dart';
 import 'package:countries_app_test/widgets/info_widget.dart';
-import 'package:countries_app_test/widgets/navigation_menu';
+// import 'package:countries_app_test/widgets/navigation_menu';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -32,7 +32,7 @@ class _VisitedScreenState extends State<VisitedScreen> {
           ),
         ),
       ),
-      drawer: NavDrawer(),
+      // drawer: NavDrawer(),
       body: ValueListenableBuilder<Box<CountryModel>>(
           valueListenable: Boxes.getVisited().listenable(),
           builder: (context, box, _) {
@@ -40,39 +40,9 @@ class _VisitedScreenState extends State<VisitedScreen> {
               options: queryOptions(),
               builder: (QueryResult result,
                   {VoidCallback? refetch, FetchMore? fetchMore}) {
-                if (result.isLoading) {
-                  return Center(child: CircularProgressIndicator());
-                }
-
-                if (result.data == null) {
-                  return info(
-                    icon: Icons.cloud_queue,
-                    text: 'Connect to the internet',
-                  );
-                }
-
-                allCountries = (result.data!['countries'] as List<dynamic>)
-                    .cast<Map<String, dynamic>>();
-                countries ??= allCountries;
-
                 return Column(
                   children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: EdgeInsets.all(10),
-                      width: double.infinity,
-                      height: 80,
-                      child: Card(
-                        child: Center(
-                          child: Text(
-                            'Number of Visited Countries : ' +
-                                visitedCountries.length.toString(),
-                            style: TextStyle(fontSize: 18, color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                    ),
+                    NumOfVisited(visitedCountries: visitedCountries),
                     countriesList(),
                   ],
                 );
@@ -102,6 +72,34 @@ class _VisitedScreenState extends State<VisitedScreen> {
                     ));
               },
             ),
+    );
+  }
+}
+
+class NumOfVisited extends StatelessWidget {
+  const NumOfVisited({
+    Key? key,
+    required this.visitedCountries,
+  }) : super(key: key);
+
+  final List visitedCountries;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+      padding: EdgeInsets.all(10),
+      width: double.infinity,
+      height: 80,
+      child: Card(
+        child: Center(
+          child: Text(
+            'Number of Visited Countries : ' +
+                visitedCountries.length.toString(),
+            style: TextStyle(fontSize: 18, color: Colors.grey),
+          ),
+        ),
+      ),
     );
   }
 }
