@@ -2,7 +2,7 @@ import 'package:countries_app_test/boxes/boxes.dart';
 import 'package:countries_app_test/components/list_component.dart';
 import 'package:countries_app_test/model/country_model.dart';
 import 'package:countries_app_test/widgets/info_widget.dart';
-import 'package:countries_app_test/widgets/navigation_menu';
+import 'package:countries_app_test/widgets/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -40,21 +40,6 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               options: queryOptions(),
               builder: (QueryResult result,
                   {VoidCallback? refetch, FetchMore? fetchMore}) {
-                if (result.isLoading) {
-                  return Center(child: CircularProgressIndicator());
-                }
-
-                if (result.data == null) {
-                  return info(
-                    icon: Icons.cloud_queue,
-                    text: 'Connect to the internet',
-                  );
-                }
-
-                allCountries = (result.data!['countries'] as List<dynamic>)
-                    .cast<Map<String, dynamic>>();
-                countries ??= allCountries;
-
                 return Column(
                   children: <Widget>[
                     countriesList(),
