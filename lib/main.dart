@@ -1,5 +1,4 @@
 import 'package:countries_app_test/api.dart';
-import 'package:countries_app_test/pages/countries_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hive/hive.dart';
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: '/',
         routes: myRoutes,
-        title: 'Flutter Demo',
+        title: 'Countries App',
         theme: ThemeData(
           scaffoldBackgroundColor: Color(0xFFF9F0F0),
           appBarTheme: AppBarTheme(
